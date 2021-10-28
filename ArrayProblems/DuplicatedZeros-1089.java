@@ -38,6 +38,20 @@ class Solution {
 [1,0]-> [1,0]
 [0,1,0] -> [0,0,1]
 
+[1,0,2,3,5]
+
+set pointer j = arr.length + numberOfZeroes => we know the earliest i can overwrite to j is when j is in bound
+and j and i are decrementing at the same time so essentially the last element that can be overwritten will be replaced by the last item in the finished array
+
+         i j
+[1,0,2,3,5,X]
+       i j
+[1,0,2,3,5,X]
+       i j            i,j
+[1,0,2,3,5,X] -> [1,0,2,3,3,X]
+   i,j              ij
+[1,0,2,2,5,X] -> [1,0,0,2,5,X] -> [1,00,0,2,5,X]
+
 
                 i   j
 [0,1,0] -> [0,1,0,X,X]
@@ -49,6 +63,19 @@ class Solution {
 [0,1,0,X,X]   => [0,1,0,X,X]
  i   j
 [0,1,0,X,X]
+
+
+
+
+
+
+
+[2,0,9,1,3,2,4] => [2,0,0,9,1,3,2] --- 4
+             i j                i,j                i,j                i,j                i,j
+[2,0,9,1,3,2,4,X] -> [2,0,9,1,3,2,4,X] -> [2,0,9,1,3,2,2,X] -> [2,0,9,1,3,3,2,X] -> [2,0,9,1,1,3,2,X]
+
+   i,j                  ij
+[2,0,9,9,1,3,2,X] -> [2,0,0,9,1,3,2,X] ---> [2,0,0,9,1,3,2]
 
 
 knowing two things
@@ -97,6 +124,11 @@ i,j         copy over the 0 to index adjacent to its position
 [0,1,1] -> [0,0,1] => next iteration j will be smaller than i we decrement i
 
 [0,1,1] -> i <0 thus we have looked over everything within the array
+
+
+[1,0,1] -> [1,0,0],1
+     i        i          i,j        ij       i,j
+[1,0,1] -> [1,0,1] -> [1,0,1] -> [1,0,1] -> [1,0,0]
 
 
 
